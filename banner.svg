@@ -1,0 +1,163 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 320" width="100%" height="100%">
+  <defs>
+    <!-- Night Forest Sky Gradient -->
+    <linearGradient id="sky" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#040d09" />
+      <stop offset="45%" stop-color="#081c15" />
+      <stop offset="80%" stop-color="#1b4332" />
+      <stop offset="100%" stop-color="#2d6a4f" />
+    </linearGradient>
+
+    <!-- Mist Gradient -->
+    <linearGradient id="mist" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#74c69d" stop-opacity="0" />
+      <stop offset="30%" stop-color="#74c69d" stop-opacity="0.12" />
+      <stop offset="70%" stop-color="#52b788" stop-opacity="0.18" />
+      <stop offset="100%" stop-color="#74c69d" stop-opacity="0" />
+    </linearGradient>
+
+    <!-- Moon Glow -->
+    <radialGradient id="moonGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#d8f3dc" stop-opacity="0.9" />
+      <stop offset="30%" stop-color="#95d5b2" stop-opacity="0.35" />
+      <stop offset="100%" stop-color="#081c15" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- Firefly Glow -->
+    <radialGradient id="firefly" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="1" />
+      <stop offset="35%" stop-color="#b7e4c7" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#52b788" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- Reusable Pine Tree Layer -->
+    <g id="tree">
+      <polygon points="0,-55 -18,-15 -8,-15 -24,15 -10,15 -28,45 28,45 10,15 24,15 8,-15 18,-15" />
+    </g>
+
+    <style>
+      .title {
+        font-family: 'JetBrains Mono', 'Fira Code', monospace, sans-serif;
+        font-size: 58px;
+        font-weight: 800;
+        fill: #d8f3dc;
+        letter-spacing: 3px;
+      }
+      .mist-1 {
+        animation: driftRight 18s ease-in-out infinite alternate;
+      }
+      .mist-2 {
+        animation: driftLeft 24s ease-in-out infinite alternate;
+      }
+      .fly-1 { animation: float1 7s ease-in-out infinite, pulse 2.5s ease-in-out infinite; }
+      .fly-2 { animation: float2 9s ease-in-out infinite, pulse 3.2s ease-in-out infinite 0.7s; }
+      .fly-3 { animation: float3 8s ease-in-out infinite, pulse 2.1s ease-in-out infinite 1.4s; }
+      .fly-4 { animation: float1 11s ease-in-out infinite 1s, pulse 3.8s ease-in-out infinite 0.3s; }
+      .star { animation: twinkle 4s ease-in-out infinite alternate; }
+      .star-delay { animation: twinkle 5s ease-in-out infinite alternate 2s; }
+
+      @keyframes driftRight {
+        0% { transform: translateX(-80px); }
+        100% { transform: translateX(80px); }
+      }
+      @keyframes driftLeft {
+        0% { transform: translateX(90px); }
+        100% { transform: translateX(-90px); }
+      }
+      @keyframes float1 {
+        0%, 100% { transform: translate(0px, 0px); }
+        50% { transform: translate(22px, -28px); }
+      }
+      @keyframes float2 {
+        0%, 100% { transform: translate(0px, 0px); }
+        50% { transform: translate(-26px, -20px); }
+      }
+      @keyframes float3 {
+        0%, 100% { transform: translate(0px, 0px); }
+        50% { transform: translate(18px, 24px); }
+      }
+      @keyframes pulse {
+        0%, 100% { opacity: 0.15; }
+        50% { opacity: 0.95; }
+      }
+      @keyframes twinkle {
+        0% { opacity: 0.2; }
+        100% { opacity: 0.85; }
+      }
+    </style>
+  </defs>
+
+  <!-- Sky Background -->
+  <rect width="1200" height="320" fill="url(#sky)" rx="14" />
+
+  <!-- Stars -->
+  <g fill="#d8f3dc">
+    <circle class="star" cx="120" cy="45" r="1.2" />
+    <circle class="star-delay" cx="230" cy="30" r="1.5" />
+    <circle class="star" cx="340" cy="65" r="1" />
+    <circle class="star-delay" cx="480" cy="25" r="1.4" />
+    <circle class="star" cx="620" cy="40" r="1.1" />
+    <circle class="star-delay" cx="770" cy="28" r="1.6" />
+    <circle class="star" cx="890" cy="55" r="1.2" />
+    <circle class="star-delay" cx="1040" cy="35" r="1.5" />
+    <circle class="star" cx="1130" cy="70" r="1.1" />
+    <circle class="star-delay" cx="85" cy="95" r="1.3" />
+    <circle class="star" cx="980" cy="85" r="1.2" />
+  </g>
+
+  <!-- Moon -->
+  <circle cx="980" cy="85" r="75" fill="url(#moonGlow)" />
+  <circle cx="980" cy="85" r="22" fill="#d8f3dc" opacity="0.9" />
+
+  <!-- Distant Mountains -->
+  <path d="M0,320 L0,210 L140,150 L290,215 L460,135 L640,210 L810,145 L990,205 L1120,160 L1200,195 L1200,320 Z" fill="#133124" opacity="0.7" />
+  <path d="M0,320 L0,235 L190,180 L370,240 L550,175 L730,235 L910,185 L1070,230 L1200,190 L1200,320 Z" fill="#0e261c" opacity="0.85" />
+
+  <!-- Mist Layer 1 -->
+  <rect class="mist-1" x="-150" y="195" width="1500" height="45" fill="url(#mist)" />
+
+  <!-- Midground Pine Forest -->
+  <g fill="#091912">
+    <use href="#tree" x="45" y="255" transform="scale(1.1)" />
+    <use href="#tree" x="95" y="260" transform="scale(0.95)" />
+    <use href="#tree" x="155" y="250" transform="scale(1.2)" />
+    <use href="#tree" x="230" y="265" transform="scale(1.0)" />
+    <use href="#tree" x="310" y="255" transform="scale(1.15)" />
+    <use href="#tree" x="760" y="265" transform="scale(1.05)" />
+    <use href="#tree" x="840" y="250" transform="scale(1.2)" />
+    <use href="#tree" x="920" y="260" transform="scale(0.95)" />
+    <use href="#tree" x="990" y="245" transform="scale(1.25)" />
+    <use href="#tree" x="1080" y="260" transform="scale(1.1)" />
+  </g>
+
+  <!-- Mist Layer 2 -->
+  <rect class="mist-2" x="-150" y="245" width="1500" height="50" fill="url(#mist)" />
+
+  <!-- Foreground Silhouette Ridge & Trees -->
+  <path d="M0,320 L0,275 Q300,255 600,278 T1200,268 L1200,320 Z" fill="#040d09" />
+  <g fill="#040d09">
+    <use href="#tree" x="25" y="280" transform="scale(1.3)" />
+    <use href="#tree" x="80" y="285" transform="scale(1.1)" />
+    <use href="#tree" x="145" y="290" transform="scale(1.0)" />
+    <use href="#tree" x="820" y="285" transform="scale(1.15)" />
+    <use href="#tree" x="900" y="275" transform="scale(1.3)" />
+    <use href="#tree" x="975" y="285" transform="scale(1.1)" />
+  </g>
+
+  <!-- Animated Fireflies -->
+  <g>
+    <circle class="fly-1" cx="180" cy="220" r="6" fill="url(#firefly)" />
+    <circle class="fly-2" cx="280" cy="180" r="5" fill="url(#firefly)" />
+    <circle class="fly-3" cx="420" cy="240" r="7" fill="url(#firefly)" />
+    <circle class="fly-4" cx="540" cy="160" r="5" fill="url(#firefly)" />
+    <circle class="fly-1" cx="680" cy="230" r="6" fill="url(#firefly)" />
+    <circle class="fly-2" cx="790" cy="190" r="7" fill="url(#firefly)" />
+    <circle class="fly-3" cx="920" cy="215" r="5" fill="url(#firefly)" />
+    <circle class="fly-4" cx="1060" cy="175" r="6" fill="url(#firefly)" />
+    <circle class="fly-2" cx="350" cy="130" r="4.5" fill="url(#firefly)" />
+    <circle class="fly-1" cx="850" cy="135" r="5" fill="url(#firefly)" />
+  </g>
+
+  <!-- Clean Center Title -->
+  <text x="50%" y="155" text-anchor="middle" class="title">Swastik</text>
+</svg>
