@@ -1,0 +1,490 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 340" width="100%" height="100%">
+  <defs>
+    <!-- Deep Forest Night Sky -->
+    <linearGradient id="campSky" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#020705" />
+      <stop offset="45%" stop-color="#071710" />
+      <stop offset="80%" stop-color="#0f291e" />
+      <stop offset="100%" stop-color="#1b4332" />
+    </linearGradient>
+
+    <!-- Tent Roof & Side Gradients -->
+    <linearGradient id="tentSide" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2d6a4f" />
+      <stop offset="60%" stop-color="#1b4332" />
+      <stop offset="100%" stop-color="#0f291e" />
+    </linearGradient>
+
+    <linearGradient id="tentFront" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1b4332" />
+      <stop offset="100%" stop-color="#091912" />
+    </linearGradient>
+
+    <linearGradient id="tentFlap" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#40916c" />
+      <stop offset="100%" stop-color="#1b4332" />
+    </linearGradient>
+
+    <!-- Warm Interior Tent Lantern Glow -->
+    <radialGradient id="tentInnerGlow" cx="50%" cy="38%" r="65%">
+      <stop offset="0%" stop-color="#fff3b0" stop-opacity="1" />
+      <stop offset="35%" stop-color="#ffd166" stop-opacity="0.92" />
+      <stop offset="75%" stop-color="#f4a261" stop-opacity="0.55" />
+      <stop offset="100%" stop-color="#1b4332" stop-opacity="0.2" />
+    </radialGradient>
+
+    <!-- Campfire Ground & Air Glow -->
+    <radialGradient id="fireGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ff9f1c" stop-opacity="0.5" />
+      <stop offset="45%" stop-color="#e76f51" stop-opacity="0.22" />
+      <stop offset="100%" stop-color="#081c15" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- Laptop Directional Screen Cone Light -->
+    <linearGradient id="laptopLight" x1="100%" y1="50%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#d8f3dc" stop-opacity="0.32" />
+      <stop offset="55%" stop-color="#74c69d" stop-opacity="0.12" />
+      <stop offset="100%" stop-color="#52b788" stop-opacity="0" />
+    </linearGradient>
+
+    <!-- Forest Mist -->
+    <linearGradient id="campMist" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#52b788" stop-opacity="0" />
+      <stop offset="30%" stop-color="#52b788" stop-opacity="0.14" />
+      <stop offset="70%" stop-color="#74c69d" stop-opacity="0.18" />
+      <stop offset="100%" stop-color="#52b788" stop-opacity="0" />
+    </linearGradient>
+
+    <!-- Firefly Glow -->
+    <radialGradient id="campFly" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="1" />
+      <stop offset="35%" stop-color="#d8f3dc" stop-opacity="0.85" />
+      <stop offset="100%" stop-color="#52b788" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- Moon Halo -->
+    <radialGradient id="moonHalo" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#d8f3dc" stop-opacity="0.45" />
+      <stop offset="50%" stop-color="#74c69d" stop-opacity="0.12" />
+      <stop offset="100%" stop-color="#081c15" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- Layered Pine Tree -->
+    <g id="pineTree">
+      <rect x="-4" y="-8" width="8" height="14" fill="#040d09" />
+      <polygon points="0,-95 -22,-55 -10,-55 -30,-22 -14,-22 -38,10 38,10 14,-22 30,-22 10,-55 22,-55" />
+    </g>
+
+    <!-- Outer Card Clip -->
+    <clipPath id="cardClip">
+      <rect width="540" height="340" rx="16" />
+    </clipPath>
+
+    <!-- Exact Tent Door Opening Clip (Keeps Bed/Blanket Strictly Inside Tent) -->
+    <clipPath id="tentInteriorClip">
+      <polygon points="88,274 135,166 182,274" />
+    </clipPath>
+
+    <style>
+      .tree-sway-1 { animation: sway1 6.5s ease-in-out infinite alternate; }
+      .tree-sway-2 { animation: sway2 8s ease-in-out infinite alternate-reverse; }
+      .mist-drift { animation: mistMove 16s ease-in-out infinite alternate; }
+
+      .flame-1 {
+        transform-origin: 416px 268px;
+        animation: fOuter 0.85s ease-in-out infinite alternate;
+      }
+      .flame-2 {
+        transform-origin: 416px 268px;
+        animation: fMid 0.6s ease-in-out infinite alternate;
+      }
+      .flame-3 {
+        transform-origin: 416px 268px;
+        animation: fInner 0.42s ease-in-out infinite alternate;
+      }
+      .fire-halo {
+        animation: lanternGlow 1.7s ease-in-out infinite alternate;
+      }
+      .lantern-pulse {
+        animation: lanternGlow 2.4s ease-in-out infinite alternate;
+      }
+
+      /* Pure Vertical Typing / Clacking Hands (No Detached Rotation Circles) */
+      .type-left { animation: tapLeft 0.16s ease-in-out infinite alternate; }
+      .type-right { animation: tapRight 0.19s ease-in-out infinite alternate; }
+      .head-nod { animation: nodMove 1.8s ease-in-out infinite alternate; }
+      .screen-pulse { animation: screenFlicker 1.1s ease-in-out infinite alternate; }
+
+      /* Pure Translate Coffee Steam (Stays Right Above Mug) */
+      .steam-1 { animation: mugSteam1 2.4s ease-out infinite; }
+      .steam-2 { animation: mugSteam2 2.4s ease-out infinite 1.2s; }
+
+      /* Pure Translate Fire Sparks & Smoke Wisps */
+      .spark-1 { animation: sparkUp1 2.2s ease-out infinite; }
+      .spark-2 { animation: sparkUp2 2.7s ease-out infinite 0.7s; }
+      .spark-3 { animation: sparkUp3 2.0s ease-out infinite 1.4s; }
+      .fire-smoke-1 { animation: fireSmoke 3.8s ease-out infinite; }
+      .fire-smoke-2 { animation: fireSmoke 4.4s ease-out infinite 1.9s; }
+
+      .fly-a { animation: flyFloat1 6s ease-in-out infinite, flyBlink 2.3s ease-in-out infinite; }
+      .fly-b { animation: flyFloat2 7.5s ease-in-out infinite, flyBlink 3.1s ease-in-out infinite 0.9s; }
+      .fly-c { animation: flyFloat1 8.5s ease-in-out infinite 1.2s, flyBlink 2.7s ease-in-out infinite 0.4s; }
+
+      .star-twinkle { animation: starPulse 3.2s ease-in-out infinite alternate; }
+      .star-twinkle-2 { animation: starPulse 4.4s ease-in-out infinite alternate 1.6s; }
+
+      @keyframes tapLeft {
+        0% { transform: translateY(0px); }
+        100% { transform: translateY(-2.2px); }
+      }
+      @keyframes tapRight {
+        0% { transform: translateY(-2.2px); }
+        100% { transform: translateY(0.4px); }
+      }
+      @keyframes nodMove {
+        0% { transform: translateY(0px); }
+        100% { transform: translateY(1.2px); }
+      }
+      @keyframes screenFlicker {
+        0% { opacity: 0.75; }
+        100% { opacity: 1; }
+      }
+      @keyframes mugSteam1 {
+        0% { transform: translate(0px, 2px); opacity: 0; }
+        35% { opacity: 0.85; }
+        100% { transform: translate(-2px, -16px); opacity: 0; }
+      }
+      @keyframes mugSteam2 {
+        0% { transform: translate(0px, 2px); opacity: 0; }
+        35% { opacity: 0.75; }
+        100% { transform: translate(2px, -18px); opacity: 0; }
+      }
+      @keyframes sparkUp1 {
+        0% { transform: translate(0px, 0px); opacity: 1; }
+        100% { transform: translate(-12px, -65px); opacity: 0; }
+      }
+      @keyframes sparkUp2 {
+        0% { transform: translate(0px, 0px); opacity: 1; }
+        100% { transform: translate(14px, -75px); opacity: 0; }
+      }
+      @keyframes sparkUp3 {
+        0% { transform: translate(0px, 0px); opacity: 1; }
+        100% { transform: translate(-3px, -82px); opacity: 0; }
+      }
+      @keyframes fireSmoke {
+        0% { transform: translate(0px, 0px); opacity: 0; }
+        25% { opacity: 0.28; }
+        100% { transform: translate(12px, -68px); opacity: 0; }
+      }
+      @keyframes sway1 {
+        0% { transform: skewX(-1deg); }
+        100% { transform: skewX(1deg); }
+      }
+      @keyframes sway2 {
+        0% { transform: skewX(1.2deg); }
+        100% { transform: skewX(-1.2deg); }
+      }
+      @keyframes mistMove {
+        0% { transform: translateX(-45px); }
+        100% { transform: translateX(45px); }
+      }
+      @keyframes fOuter {
+        0% { transform: scale(1, 1) skewX(-2deg); }
+        100% { transform: scale(1.06, 1.12) skewX(3deg); }
+      }
+      @keyframes fMid {
+        0% { transform: scale(1.04, 0.94) skewX(3deg); }
+        100% { transform: scale(0.95, 1.14) skewX(-3deg); }
+      }
+      @keyframes fInner {
+        0% { transform: scale(0.92, 1.08); }
+        100% { transform: scale(1.08, 0.94); }
+      }
+      @keyframes lanternGlow {
+        0% { opacity: 0.78; }
+        100% { opacity: 1; }
+      }
+      @keyframes flyFloat1 {
+        0%, 100% { transform: translate(0, 0); }
+        50% { transform: translate(16px, -22px); }
+      }
+      @keyframes flyFloat2 {
+        0%, 100% { transform: translate(0, 0); }
+        50% { transform: translate(-20px, -16px); }
+      }
+      @keyframes flyBlink {
+        0%, 100% { opacity: 0.15; }
+        50% { opacity: 0.95; }
+      }
+      @keyframes starPulse {
+        0% { opacity: 0.2; }
+        100% { opacity: 0.95; }
+      }
+    </style>
+  </defs>
+
+  <g clip-path="url(#cardClip)">
+    <!-- Sky Background -->
+    <rect width="540" height="340" fill="url(#campSky)" />
+
+    <!-- Starfield -->
+    <g fill="#d8f3dc">
+      <circle class="star-twinkle" cx="48" cy="36" r="1.3" />
+      <circle class="star-twinkle-2" cx="115" cy="24" r="1.1" />
+      <circle class="star-twinkle" cx="180" cy="48" r="1.5" />
+      <circle class="star-twinkle-2" cx="250" cy="28" r="1.2" />
+      <circle class="star-twinkle" cx="315" cy="52" r="1.1" />
+      <circle class="star-twinkle-2" cx="375" cy="26" r="1.4" />
+      <circle class="star-twinkle" cx="495" cy="42" r="1.2" />
+      <circle class="star-twinkle-2" cx="82" cy="74" r="1.0" />
+      <circle class="star-twinkle" cx="290" cy="82" r="1.2" />
+    </g>
+
+    <!-- Glowing Crescent Moon -->
+    <circle cx="445" cy="64" r="52" fill="url(#moonHalo)" />
+    <path d="M435,44 A22,22 0 1,0 462,76 A18,18 0 1,1 435,44 Z" fill="#d8f3dc" opacity="0.95" />
+
+    <!-- Far Mountain Silhouettes -->
+    <path d="M0,260 L0,175 L85,118 L185,182 L305,108 L415,178 L495,135 L540,162 L540,260 Z" fill="#0c2219" opacity="0.85" />
+    <path d="M0,265 L0,200 L125,148 L240,202 L365,142 L470,198 L540,172 L540,265 Z" fill="#081912" />
+
+    <!-- Drifting Forest Mist -->
+    <rect class="mist-drift" x="-80" y="195" width="700" height="42" fill="url(#campMist)" />
+
+    <!-- Background Pine Trees -->
+    <g fill="#05110c" class="tree-sway-1">
+      <g transform="translate(38, 248) scale(1.15)"><use href="#pineTree" /></g>
+      <g transform="translate(82, 252) scale(0.92)"><use href="#pineTree" /></g>
+      <g transform="translate(128, 245) scale(1.05)"><use href="#pineTree" /></g>
+      <g transform="translate(310, 250) scale(0.88)"><use href="#pineTree" /></g>
+      <g transform="translate(352, 246) scale(1.08)"><use href="#pineTree" /></g>
+      <g transform="translate(468, 248) scale(1.22)"><use href="#pineTree" /></g>
+      <g transform="translate(515, 254) scale(0.98)"><use href="#pineTree" /></g>
+    </g>
+
+    <!-- Foreground Forest Clearing Ground -->
+    <path d="M0,252 Q180,238 360,248 T540,245 L540,340 L0,340 Z" fill="#040d09" />
+    <path d="M0,278 Q260,262 540,282 L540,340 L0,340 Z" fill="#020705" />
+
+    <!-- Foreground Side Framing Pines -->
+    <g fill="#020705" class="tree-sway-2">
+      <g transform="translate(12, 285) scale(1.35)"><use href="#pineTree" /></g>
+      <g transform="translate(532, 288) scale(1.3)"><use href="#pineTree" /></g>
+    </g>
+
+    <!-- Warm Campfire Ground Reflection -->
+    <ellipse cx="416" cy="276" rx="95" ry="24" fill="url(#fireGlow)" class="fire-halo" />
+
+    <!-- ======================================================= -->
+    <!-- 3D ISOMETRIC TENT + CLIPPED COZY BEAN-BAG BED INTERIOR  -->
+    <!-- ======================================================= -->
+    <g>
+      <!-- Tent Ground Shadow -->
+      <polygon points="58,274 208,282 298,248 158,242" fill="#010403" opacity="0.75" />
+
+      <!-- Guy Lines & Stakes -->
+      <line x1="135" y1="152" x2="44" y2="270" stroke="#52b788" stroke-width="1" stroke-dasharray="3,2" opacity="0.45" />
+      <line x1="202" y1="274" x2="225" y2="282" stroke="#52b788" stroke-width="1.2" opacity="0.55" />
+      <line x1="286" y1="242" x2="308" y2="248" stroke="#52b788" stroke-width="1.2" opacity="0.55" />
+      <rect x="42" y="266" width="3" height="8" rx="1" transform="rotate(-20 42 266)" fill="#74c69d" />
+      <rect x="224" y="278" width="3" height="8" rx="1" transform="rotate(20 224 278)" fill="#74c69d" />
+      <rect x="306" y="244" width="3" height="8" rx="1" transform="rotate(20 306 244)" fill="#74c69d" />
+
+      <!-- 3D Isometric Right Side Roof Slope -->
+      <polygon points="135,152 232,134 286,242 202,274" fill="url(#tentSide)" stroke="#40916c" stroke-width="1.5" stroke-linejoin="round" />
+      <line x1="168" y1="146" x2="230" y2="263" stroke="#1b4332" stroke-width="1.2" opacity="0.8" />
+      <line x1="200" y1="140" x2="258" y2="253" stroke="#1b4332" stroke-width="1.2" opacity="0.8" />
+      <polygon points="135,152 232,134 286,242 202,274" fill="url(#fireGlow)" opacity="0.3" />
+
+      <!-- Front A-Frame Silhouette -->
+      <polygon points="68,274 135,152 202,274" fill="url(#tentFront)" stroke="#2d6a4f" stroke-width="1.5" stroke-linejoin="round" />
+
+      <!-- STRICTLY CLIPPED TENT INTERIOR (Floor, Bean-Bag Bed, Pillow, Blanket, Lantern) -->
+      <g clip-path="url(#tentInteriorClip)">
+        <!-- Warm Illuminated Inner Tent Canvas -->
+        <polygon class="lantern-pulse" points="88,274 135,166 182,274" fill="url(#tentInnerGlow)" />
+
+        <!-- Subtle Inner Tent Back Wall Depth Line -->
+        <line x1="135" y1="166" x2="148" y2="256" stroke="#d4a373" stroke-width="1" opacity="0.35" />
+
+        <!-- Dark Woven Tent Groundsheet Floor -->
+        <rect x="82" y="255" width="106" height="22" fill="#162a22" />
+        <line x1="82" y1="255" x2="188" y2="255" stroke="#2d6a4f" stroke-width="1" />
+
+        <!-- Plush Bean-Bag Lounger Backrest (Left Side of Tent) -->
+        <path d="M88,266 C88,242 106,236 125,244 C134,248 138,257 136,266 Z" fill="#9c6644" stroke="#582f0e" stroke-width="1.1" />
+
+        <!-- Soft Cream Sleeping Pillow Tilted Against Bean-Bag -->
+        <ellipse cx="117" cy="249" rx="12" ry="5.5" transform="rotate(-14 117 249)" fill="#fefae0" stroke="#d4a373" stroke-width="1" />
+
+        <!-- Puffy Sleeping Mattress Pad Across Tent Floor -->
+        <path d="M86,271 C92,256 120,252 154,254 C172,255 182,262 184,271 Z" fill="#e76f51" stroke="#7f4f24" stroke-width="1.1" />
+
+        <!-- Cozy Folded Forest Blanket Over Right Side of Bed -->
+        <path d="M122,271 C126,257 150,254 178,257 C182,262 184,271 184,271 Z" fill="#2a9d8f" stroke="#1b4332" stroke-width="1" />
+        <!-- Quilt Stitching Lines -->
+        <path d="M136,257 Q139,264 138,271" fill="none" stroke="#1b4332" stroke-width="0.9" opacity="0.65" />
+        <path d="M152,256 Q155,263 154,271" fill="none" stroke="#1b4332" stroke-width="0.9" opacity="0.65" />
+        <path d="M167,257 Q170,264 169,271" fill="none" stroke="#1b4332" stroke-width="0.9" opacity="0.65" />
+
+        <!-- Hanging Camp Lantern Inside Tent Peak -->
+        <line x1="135" y1="166" x2="135" y2="185" stroke="#3b220c" stroke-width="1.5" />
+        <polygon points="128,185 142,185 139,182 131,182" fill="#3b220c" />
+        <rect x="130" y="185" width="10" height="12" rx="2.5" fill="#fff3b0" stroke="#e76f51" stroke-width="1.2" />
+        <rect x="129" y="197" width="12" height="2.5" rx="1" fill="#3b220c" />
+      </g>
+
+      <!-- Rolled-Back Left & Right Tent Door Flaps Framing the Opening -->
+      <path d="M135,152 L68,274 L90,274 Q114,222 135,166 Z" fill="url(#tentFlap)" stroke="#52b788" stroke-width="1.2" stroke-linejoin="round" />
+      <path d="M135,152 L202,274 L180,274 Q156,222 135,166 Z" fill="url(#tentFlap)" stroke="#52b788" stroke-width="1.2" stroke-linejoin="round" />
+
+      <!-- Tent Floor Threshold Rim -->
+      <line x1="88" y1="274" x2="182" y2="274" stroke="#2d6a4f" stroke-width="2" stroke-linecap="round" />
+
+      <!-- Top Ridge Pole Cap Highlight -->
+      <line x1="135" y1="152" x2="232" y2="134" stroke="#74c69d" stroke-width="2.2" stroke-linecap="round" />
+    </g>
+
+    <!-- ======================================================= -->
+    <!-- LOG SEAT + STEAMING COFFEE MUG + YOU CODING WITH SPECS  -->
+    <!-- ======================================================= -->
+    <g>
+      <!-- Log Ground Shadow -->
+      <ellipse cx="295" cy="290" rx="50" ry="8" fill="#010403" opacity="0.8" />
+
+      <!-- Wooden Camp Log Seat -->
+      <path d="M246,278 L328,258 A8,12 0 0,1 333,278 L251,298 Z" fill="#3b220c" stroke="#261507" stroke-width="1.3" />
+      <line x1="262" y1="282" x2="322" y2="267" stroke="#261507" stroke-width="1" opacity="0.6" />
+      <line x1="274" y1="287" x2="315" y2="277" stroke="#582f0e" stroke-width="1" opacity="0.5" />
+      <!-- Log Cut End Rings -->
+      <ellipse cx="248" cy="288" rx="5.5" ry="10" transform="rotate(-12 248 288)" fill="#dda15e" stroke="#3b220c" stroke-width="1.2" />
+      <ellipse cx="248" cy="288" rx="2.8" ry="5" transform="rotate(-12 248 288)" fill="none" stroke="#bc6c25" stroke-width="0.9" />
+
+      <!-- STEAMING COFFEE MUG ON THE LOG BESIDE YOU -->
+      <g>
+        <!-- Mug Shadow on Log -->
+        <ellipse cx="264" cy="276" rx="7.5" ry="2.5" fill="#1a0f07" opacity="0.85" />
+        <!-- Mug Handle (Left Side) -->
+        <path d="M258,264 C253,264 253,272 258,272" fill="none" stroke="#d8f3dc" stroke-width="2" stroke-linecap="round" />
+        <!-- Mug Ceramic Body -->
+        <rect x="257" y="261" width="13" height="14" rx="2.5" fill="#d8f3dc" stroke="#52b788" stroke-width="1" />
+        <!-- Green Forest Band on Mug -->
+        <rect x="257.5" y="266" width="12" height="3.5" fill="#2d6a4f" />
+        <!-- Hot Dark Coffee Rim -->
+        <ellipse cx="263.5" cy="261.5" rx="6" ry="2" fill="#3b220c" stroke="#d8f3dc" stroke-width="0.8" />
+
+        <!-- Rising Coffee Steam Wisps (Pure Vertical Translate - Stays Right Above Mug) -->
+        <path class="steam-1" d="M261,257 Q259,252 262,248 Q265,244 261,239" fill="none" stroke="#d8f3dc" stroke-width="1.5" stroke-linecap="round" />
+        <path class="steam-2" d="M266,258 Q268,253 265,249 Q262,245 266,240" fill="none" stroke="#95d5b2" stroke-width="1.4" stroke-linecap="round" />
+      </g>
+
+      <!-- YOU SITTING ON THE LOG CODING ON MACBOOK (WITH SPECS & CLEAN HANDS) -->
+      <g>
+        <!-- Back Leg & Sneaker -->
+        <path d="M300,262 L322,262 L327,284 L319,285 L314,268 L296,268 Z" fill="#0d1b2a" />
+        <path d="M320,283 L334,283 Q337,283 337,287 L318,287 Z" fill="#d8f3dc" stroke="#1b4332" stroke-width="0.8" />
+
+        <!-- Front Leg & Sneaker -->
+        <path d="M294,265 L316,266 L321,288 L312,289 L307,272 L290,271 Z" fill="#1b263b" />
+        <path d="M312,287 L327,287 Q330,287 330,291 L310,291 Z" fill="#d8f3dc" stroke="#2d6a4f" stroke-width="0.9" />
+
+        <!-- Clean Hoodie Torso (No Random Back Circle) -->
+        <path d="M282,266 C279,246 283,228 295,225 C306,224 312,238 310,265 Z" fill="#1b4332" stroke="#40916c" stroke-width="1.2" />
+        <!-- Natural Draped Hoodie Collar -->
+        <path d="M286,229 Q293,233 302,228" fill="none" stroke="#52b788" stroke-width="1.6" stroke-linecap="round" />
+
+        <!-- Directional Laptop Screen Light Cone (No Circle Over Hands) -->
+        <polygon class="screen-pulse" points="333,249 343,231 304,202 296,246" fill="url(#laptopLight)" />
+
+        <!-- Back Arm & Clacking Left Hand/Fingers -->
+        <g class="type-left">
+          <path d="M300,234 L313,245 L324,245" fill="none" stroke="#2d6a4f" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+          <!-- Clean Hand & Typing Fingers -->
+          <path d="M323,244 L329,245 L330,247 L323,247 Z" fill="#f1c27d" />
+        </g>
+
+        <!-- MacBook Air Resting on Lap -->
+        <g>
+          <!-- Keyboard Base -->
+          <polygon points="310,249 333,249 336,252 312,252" fill="#ced4da" stroke="#495057" stroke-width="0.7" />
+          <!-- Open Angled Display Lid -->
+          <polygon points="333,249 343,230 346,231 336,252" fill="#adb5bd" stroke="#495057" stroke-width="0.7" />
+          <!-- Glowing Screen Inner Bezel -->
+          <line x1="333" y1="248.5" x2="342.5" y2="230.5" stroke="#d8f3dc" stroke-width="1.8" class="screen-pulse" />
+        </g>
+
+        <!-- Front Arm & Clacking Right Hand/Fingers -->
+        <g class="type-right">
+          <path d="M293,236 L307,247 L320,247" fill="none" stroke="#40916c" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" />
+          <!-- Clean Hand & Typing Fingers -->
+          <path d="M319,246 L326,247 L327,249 L319,249 Z" fill="#f1c27d" />
+        </g>
+
+        <!-- Head, Middle-Part Curtains Hair & SPECS (Glasses) -->
+        <g class="head-nod">
+          <!-- Neck -->
+          <rect x="294" y="218" width="6.5" height="9" rx="2" fill="#e0ac69" />
+          <!-- Head / Face Profile -->
+          <circle cx="300" cy="210" r="10.5" fill="#f1c27d" />
+          <!-- Subtle Nose Bridge Profile -->
+          <path d="M309,208 L312,212 L309,213" fill="#f1c27d" />
+          <!-- Ear -->
+          <circle cx="295" cy="211" r="2.2" fill="#e0ac69" />
+
+          <!-- SPECS / EYEGLASSES -->
+          <!-- Temple Arm Going to Ear -->
+          <line x1="295" y1="209" x2="304" y2="209" stroke="#d8f3dc" stroke-width="1.2" stroke-linecap="round" />
+          <!-- Glasses Lens Frame -->
+          <rect x="304" y="206.5" width="7" height="5" rx="1.2" fill="#95d5b2" fill-opacity="0.28" stroke="#d8f3dc" stroke-width="1.2" />
+          <!-- Screen Reflection Glint on Specs Lens -->
+          <line x1="306" y1="207.5" x2="309" y2="210.5" stroke="#ffffff" stroke-width="1" stroke-linecap="round" opacity="0.9" />
+
+          <!-- Silky Black Middle-Part Curtains Hair -->
+          <path d="M289,213 C286,200 295,195 304,197 C311,198 314,204 312,210 C309,205 305,202 301,202 C298,206 295,211 292,215 Z" fill="#050a08" />
+          <!-- Front Curtain Swoop -->
+          <path d="M301,199 C305,203 309,207 312,208 C313,203 309,198 301,199 Z" fill="#0d1713" />
+        </g>
+      </g>
+
+      <!-- ======================================================= -->
+      <!-- CAMPFIRE PIT, FLAMES, STONES, SPARKS & SMOKE WISPS      -->
+      <!-- ======================================================= -->
+      <!-- Rising Campfire Smoke Wisps (Curved Paths, No Circles) -->
+      <path class="fire-smoke-1" d="M414,196 Q408,182 416,170 Q424,158 415,144" fill="none" stroke="#74c69d" stroke-width="2.5" stroke-linecap="round" />
+      <path class="fire-smoke-2" d="M420,202 Q426,188 418,176 Q410,164 420,150" fill="none" stroke="#95d5b2" stroke-width="2" stroke-linecap="round" />
+
+      <!-- Crossed Campfire Logs -->
+      <rect x="384" y="264" width="64" height="10" rx="4" transform="rotate(-15 416 269)" fill="#4a2c11" stroke="#261507" stroke-width="1" />
+      <rect x="384" y="264" width="64" height="10" rx="4" transform="rotate(15 416 269)" fill="#3b220c" stroke="#261507" stroke-width="1" />
+
+      <!-- Animated Multi-Layer Campfire Flames -->
+      <path class="flame-1" d="M392,268 Q384,226 416,194 Q448,226 440,268 Z" fill="#e76f51" />
+      <path class="flame-2" d="M399,268 Q395,235 416,210 Q437,235 433,268 Z" fill="#f4a261" />
+      <path class="flame-3" d="M406,268 Q404,246 416,226 Q428,246 426,268 Z" fill="#ffd166" />
+      <path class="flame-3" d="M411,268 Q410,254 416,242 Q422,254 421,268 Z" fill="#fff3b0" />
+
+      <!-- Stone Fire Pit Ring -->
+      <ellipse cx="382" cy="272" rx="9" ry="5.5" fill="#1b4332" stroke="#081c15" stroke-width="1" />
+      <ellipse cx="398" cy="276" rx="10" ry="6" fill="#2d6a4f" stroke="#081c15" stroke-width="1" />
+      <ellipse cx="416" cy="278" rx="11" ry="6.5" fill="#1b4332" stroke="#081c15" stroke-width="1" />
+      <ellipse cx="434" cy="276" rx="10" ry="6" fill="#2d6a4f" stroke="#081c15" stroke-width="1" />
+      <ellipse cx="450" cy="272" rx="9" ry="5.5" fill="#1b4332" stroke="#081c15" stroke-width="1" />
+
+      <!-- Rising Glowing Sparks (Pure Translate - Rise Straight Above Fire) -->
+      <circle class="spark-1" cx="411" cy="228" r="2" fill="#ffd166" />
+      <circle class="spark-2" cx="422" cy="222" r="1.8" fill="#f4a261" />
+      <circle class="spark-3" cx="416" cy="216" r="1.6" fill="#ffffff" />
+    </g>
+
+    <!-- Floating Bioluminescent Fireflies -->
+    <circle class="fly-a" cx="65" cy="185" r="5" fill="url(#campFly)" />
+    <circle class="fly-b" cx="195" cy="135" r="5.5" fill="url(#campFly)" />
+    <circle class="fly-c" cx="285" cy="165" r="4.5" fill="url(#campFly)" />
+    <circle class="fly-a" cx="465" cy="160" r="5.5" fill="url(#campFly)" />
+    <circle class="fly-b" cx="115" cy="115" r="4.5" fill="url(#campFly)" />
+    <circle class="fly-c" cx="495" cy="220" r="5" fill="url(#campFly)" />
+  </g>
+
+  <!-- Outer Card Border -->
+  <rect width="540" height="340" rx="16" fill="none" stroke="#2d6a4f" stroke-width="2" />
+</svg>
